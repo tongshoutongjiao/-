@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<head>
+    <title> 三级联动 </title>
+    <meta charset="utf-8">
+    <style>
+        select{
+            height: 30px;
+            line-height: 30px;
+            margin-right: 20px;
+        }
+    </style>
+
+    <script src="jquery.min.js"></script>
+    <script src="jsAddress.js"></script>
+    <script src="addressSelect.js"></script>
+</head>
+
+<body>
+
+
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+
+
+<script type="text/javascript">
+    var a = new addressSelect("#div1", {province: 2, city: 1, county: -1}, function(result) {
+        console.log("change result1:", result);
+        console.log(city);
+        var provinceIndex=result.province;
+        var cityIndex=result.city;
+        var countyIndex=result.county;
+        console.log(city[provinceIndex].name)
+        console.log(city[provinceIndex].city[cityIndex].name)
+        console.log(city[provinceIndex].city[cityIndex].area[countyIndex])
+    });
+    var b = new addressSelect("#div2", null, function(result) {
+        console.log("change result2:", result);
+    });
+
+
+
+    console.log(a);
+    console.log(b)
+</script>
+
+
+</body>
+
+</html>
