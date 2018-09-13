@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>发布订阅模式</title>
+</head>
+<body>
+  <script type="text/javascript"> 
+
+  //  核心：将要订阅的方法按分类放在一个数组里，当发布时取出执行即可
+  let Jack={
+
+    //按类型存储要订阅的方法列表  
+    subscribers:{
+      'any':[]
+    },
+
+    //  按类型将要存储的方法保存至相应数组中
+    subscribe:function(type='any',fn){
+
+      if(!this.subscribers[type]){
+         // 不存在当前存储当前类型事件的数组，则新建一个
+        this.subscribers[type]=[];
+      }
+      //  将当前要存储的fn 存放至相应事件池中
+      this.subscribers[type].push(fn);
+    },
+
+   // 取消订阅，传入当前取消订阅的事件名及类型,遍历当前事件库下的数组,过滤到当前传递的fn并返回
+    unsubscribe:function(type='any',fn){
+      this.subscribers[type]=this.subscribers[type].filter(function(item){
+        return item!==fn;
+      })
+    },
+
+    // 传递事件类型,接受参数，并执行事件池中相应的事件，
+    publish:function(type='any',...args){
+      this.subscribers[type].forEach(element => {
+        element(...args)
+      });
+
+    }
+
+  }
+    
+  let Tom={
+    readNews:function(info){
+      console.log(info);
+    }
+  }
+
+    //  tom 订阅jack的报纸
+    Jack.subscribe('娱乐',Tom.readNews);
+    Jack.subscribe('体育',Tom.readNews);
+
+    // tom 退订娱乐新闻
+    Jack.unsubscribe('娱乐',Tom.readNews)
+
+    // 发布新报纸
+    Jack.publish('娱乐','she惊喜登台')
+    Jack.publish('体育','欧国联-意大利0-1客负葡萄牙')
+
+
+    
+    
+    
+    </script>
+  
+</body>
+</html>

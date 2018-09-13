@@ -41,7 +41,7 @@ var addressSelectHelp = {
 
 // 地址选择对象
 var addressSelect = (function(addressSelectHelp) {
-  console.log('测试测试测试');
+   console.log('测试测试测试');
 
     /*
      * 地址选择对象
