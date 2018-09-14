@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>map 用法</title>
+</head>
+<body>
+  <script type='text/javascript'>
+  let array=['1','2','3','4','5'];
+  let obj={
+    name:'zhl',
+    age:'12'
+  }
+  let newArr=array.map(function(item,index,arr){
+    console.log(item,index,arr);
+    console.log(this)
+    return {
+      item:index,
+      name:this.name
+    }
+  },obj)
+  console.log(newArr)
+    
+    
+    
+    </script>
+
+  
+</body>
+</html>
