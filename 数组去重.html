@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数组去重</title>
+</head>
+<body>
+  <script>                      
+    
+//     思路1：定义一个新数组，并存放原数组的第一个元素，然后将元素组一一和新数组的元素对比，若不同则存放在新数组中
+// 思路2：先将原数组排序，在与相邻的进行比较，如果不同则存入新数组。
+// 思路3：利用对象属性存在的特性，如果没有该属性则存入新数组。
+// 思路4（最常用）：使用es6 set
+let arr= [1, 2, 3, 3, 5, 7, 2, 6, 8];
+console.log([...new Set(arr)]);
+
+    
+    
+    </script>
+  
+</body>
+</html>
