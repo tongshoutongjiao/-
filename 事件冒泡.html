@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  js事件冒泡
+  冒泡解释：当点击一个元素触发事件时. 
+  事件会先从元素的最外层父元素一层一层进入到触发的元素, 
+  然后在从触发元素一层一层返回到最外层父元素, 
+  从最外层一层一层进入的阶段叫事件捕获阶段,
+   从最里层一层一层往外的阶段叫事件冒泡
+
+   js事件委托
+   事件委托
+参考定义：事件委托就是利用事件冒泡，
+只指定一个事件处理程序，就可以管理某一类型的所有事件 
+好处：给重复的节点添加相同操作，减少dom交互，提高性能 
+实现思路：给父组件添加事件，通过事件冒泡，排查元素是否为指定元素，并进行系列操作
+  
+</body>
+</html>
