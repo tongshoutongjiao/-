@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Reduce 的用法</title>
+</head>
+<body>
+  <div>Array reduce 的用法</div>
+
+
+
+
+
+  <script>
+    // The reduce() method executes a reducer function (that you provide) on each member of the array resulting in a single output value. 
+    const array=[1,2,3,4,5];
+    const reducer=(acc,cur)=>acc+cur;
+
+    let sum= array.reduce(reducer);
+    let sum2= array.reduce(reducer,5);
+     console.log(sum);
+     console.log(sum2);
+
+    //  Your reducer function's returned value is assigned to the accumulator,
+    //  whose value is remembered across each iteration throughout the array and ultimately becomes the final, single resulting value.
+
+    // examples
+
+
+    // 1 计算数组每一项的和
+    let exm1=[0,1,2,3].reduce(function(acc,cur){
+      return acc+cur;
+    },0);
+    console.log(exm1);
+
+    // 使用箭头函数代替
+    exm1=[0,1,2,3].reduce((acc,cur)=>acc+cur,0);
+    console.log(exm1)
+
+//2 计算一个json对象数组中的某个值
+
+// To sum up values contained in an array of objects you must supply an initial value so that each item passes through your function.
+
+let initValue=0;
+let exm2=[{x:1},{x:2},{x:3}].reduce((acc,cur)=>acc+cur.x,initValue);
+
+console.log('exam2');
+console.log(exm2)
+
+// flatten an array of arrays  将多个数组展开成变成一个
+
+let arrays=[[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]];
+let exam3=arrays.reduce((acc,cur)=>acc.concat(cur),[]);
+console.log('exam3')
+console.log(exam3);
+
+//   Counting instances of values in an object 统计json格式对象中出现value的次数
+let names=['Alice','Paul','james','kobe','james','kobe','Paul','Paul','king','kobe','james'];
+
+
+let res=names.reduce((acc,cur)=>{
+  if(cur in acc){
+    acc[cur]++;
+  }else{
+    acc[cur]=1;
+  }
+  return acc;
+},{})
+
+console.log('res')
+console.log(res)
+
+// Grouping objects by a property
+
+let people=[
+  {name:'Alice',age:21},
+  {name:'ahi',age:21},
+  {name:'Max',age:20},
+  {name:'mix',age:16},
+  {name:'Jane',age:20},
+  {name:'Jane',age:19}
+];
+function groupBy(objectArray,property){
+  return objectArray.reduce(function(acc,obj){
+    let key =obj[property];
+    if(!acc[key]){
+      acc[key]=[]
+    }
+    acc[key].push(obj);
+    return acc;
+  },{})
+}
+
+let groupedPeople=groupBy(people,'name');
+
+console.log('groupedPeople');
+console.log(groupedPeople)
+
+
+// Bonding arrays contained in an array of objects using the spread operator and initialValue
+  //  
+
+
+  var friends = [{
+  name: 'Anna',
+  books: ['Bible', 'Harry Potter'],
+  age: 21
+ }, {
+  name: 'Bob',
+  books: ['War and peace', 'Romeo and Juliet'],
+  age: 26
+ }, {
+  name: 'Alice',
+  books: ['The Lord of the Rings', 'The Shining'],
+  age: 18
+  }];
+var allbooks = friends.reduce(function(accumulator, currentValue) {
+  return [...accumulator, ...currentValue.books];
+}, ['Alphabet']);
+
+  let arr = [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4];
+   let result = arr.sort().reduce((accumulator, current) => {
+    const length = accumulator.length
+    if (length === 0 || accumulator[length - 1] !== current) {
+        accumulator.push(current);
+    }
+    return accumulator;
+}, []);
+  </script>
+</body>
+</html>
