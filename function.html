@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解构赋值</title>
+</head>
+<body>
+<script type="text/javascript">
+    var a;
+    var f = function () {
+        var i = 3;
+        console.log(i + 1);  //4
+        a = function () {
+            console.log(i)  //3
+        }
+    }
+
+    f();
+    a();
+
+    function lengend({name, alias, r = '暂无资料'}) {
+        console.log(`${name},别名${alias},r技能为${r}`);
+        return `${name}, 别名${alias}, r技能为${r}`;
+    }
+
+    lengend({name: 'jinx', alias: '金克丝', r: '超究极死神飞弹'});
+
+
+</script>
+
+</body>
+</html>

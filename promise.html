@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>promise</title>
+</head>
+<div>promise</div>
+<body>
+
+  <script type="text/javascript">
+
+  function add(getX,getY,cb){
+    let x,y;
+    getX(function(xVal){
+      x=xVal;
+      //  两个都准备好了
+      if(y!=undefined){
+        cb(x+y);
+      }
+    })
+
+    getY(function(yVal){
+      y=yVal;
+      //  两个都准备好了？
+      if(x!=undefined){
+        cb(x+y)
+      }
+    })
+
+  }
+
+ async function xVal(cb){
+   let x=5;
+
+   cb(x);
+};
+function yVal(cb){
+  let y=3;
+  cb(y)
+}
+
+add(xVal,yVal,function sum(val){
+  console.log(val);
+})
+  
+  
+  
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高阶函数</title>
+</head>
+<body>
+<script>
+    function add(x,y) {
+        console.log(x+y);
+        return x+y;
+
+    }
+    function minus(x,y) {
+        console.log(x-y);
+        return x-y;
+    }
+
+    function multiply(x,y) {
+
+        console.log(x*y);
+        return x*y;
+    }
+
+    function divide(x,y) {
+        console.log(x/y)
+        return x/y;
+    }
+    function operate(x,y,f) {
+        console.log(typeof x);
+        if(typeof x!=='number'&&typeof y!=='number'){
+             throw '输入有误'
+        }
+        return f(x,y)
+    }
+
+    operate(1,2,add);
+
+    function pow(x) {
+        return x*x;
+    }
+    let arr=[1,2,3,4,5,6];
+   let ary= arr.map(pow);
+   console.log(ary)
+
+
+
+</script>
+</body>
+</html>

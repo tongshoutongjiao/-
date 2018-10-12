@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>丘奇算法</title>
+</head>
+<body>
+<div>
+    很久很久以前，有个叫阿隆佐·邱奇的帅哥，发现只需要用函数，就可以用计算机实现运算，而不需要0、1、2、3这些数字和+、-、*、/这些符号。
+    JavaScript支持函数，所以可以用JavaScript用函数来写这些计算。来试试：
+</div>
+<script>
+
+
+    // 定义数字0
+    let zero=function (f) {
+        return function (x) {
+            return x;
+        }
+    }
+    // 定义数字1
+    let one=function (f) {
+        return function (x) {
+            return f(x)
+        }
+    }
+
+    //定义加法
+    function add(n,m) {
+        return function (f) {
+            return function (x) {
+                return m(f)(n(f)(x))
+            }
+        }
+    }
+
+    one(function () {
+        console.log('print 1times')
+    })();
+    // 计算数值2=1+1；
+     let two=add(one,one);
+    // console.log(two);
+
+    // 计算数字3=1+2；
+    let three=add(one,two);
+
+    // 计算数字5=2+3；
+    let five=add(two,three);
+
+    // 你说它是3就是3，你说它是5就是5，你怎么证明？
+
+    // 呵呵，看这里:
+
+    // 给2传一个函数，会打印两次
+    (two(function () {
+        console.log('print 2 times')
+    }))()
+
+
+
+    // 给3传一个函数,会打印3次:
+    (three(function () {
+        console.log('print 3 times');
+    }))();
+
+    // 给5传一个函数,会打印5次:
+    (five(function () {
+        console.log('print 5 times');
+    }))();
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
